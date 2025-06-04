@@ -10,7 +10,7 @@ const Features = () => {
             delay: 0.1,
             ease: "power1.inOut"
         }, {
-            toggleActions: 'restart none none none',
+            toggleActions: 'restart restart restart restart',
         })
 
     }, [])
