@@ -18,7 +18,7 @@ const ExploreStory = () => {
         animateWithScroll('#story-subtext-1', 
             { y: 0, opacity: 1 }
         );
-        gsap.to('#story-subtext-2', 
+        animateWithScroll('#story-subtext-2', 
             { y: 0, opacity: 1 }
         );
     }, [])
