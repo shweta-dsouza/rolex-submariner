@@ -1,9 +1,9 @@
 import { useGSAP } from "@gsap/react";
-import { animateWithScroll } from "../utils/gsapAnimations";
+import gsap from "gsap";
 
 const Features = () => {
     useGSAP(() => {
-        animateWithScroll('.g_text', {
+        gsap.to('.g_text', {
             y: 0,
             opacity: 1,
             duration: 1,
