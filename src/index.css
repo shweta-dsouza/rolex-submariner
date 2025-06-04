@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  width: 100dvw;
+  overflow-x: hidden;
+  height: 100%;
+  background: #000;
+  border-color: #3b3b3b;
+  user-select: none;
+}
+
+.screen-max-width {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  position: relative;
+  max-width: 1120px;
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center
+  }
+
+  .section-subtitle {
+    @apply font-light text-center md:text-lg text-sm  text-gray-400 uppercase tracking-widest opacity-0
+  }
+
+  .section-title {
+    @apply text-center font-bold lg:text-6xl md:text-5xl text-3xl text-gray-400 opacity-0 mb-2
+  }
+
+  .section-title-2 {
+    @apply text-center font-bold lg:text-5xl md:text-4xl text-2xl text-gray-400 opacity-0 mb-2
+  }
+
+  .common-padding {
+    @apply sm:py-20 py-10 sm:px-10 px-5
+  }
+
+  .section {
+    @apply font-semibold lg:text-3xl md:text-2xl text-xl text-gray-400 opacity-0 translate-y-20
+  }
+
+  .video-container {
+    @apply relative sm:w-[70vw] w-[88vw] md:h-[70vh] sm:h-[50vh] h-[35vh]
+  }
+
+  .story-text {
+    @apply text-white text-lg md:text-xl font-light opacity-0 translate-y-[100px]
+  }
+
+  .story-container {
+    @apply w-full flex-center flex-col mt-5 md:mt-8 gap-5
+  }
+
+  .story-img {
+    @apply w-[100vw] opacity-0 translate-y-[100px]
+  }
+
+  .btn {
+    @apply m-5 px-10 py-2 bg-sky-800 rounded-full opacity-0
+  }
+}
