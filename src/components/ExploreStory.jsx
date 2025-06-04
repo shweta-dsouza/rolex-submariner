@@ -1,5 +1,4 @@
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import { animateWithScroll } from "../utils/gsapAnimations";
 import { rolexOnWater, rolexUnderwater, rolexCover } from "../utils";
 
@@ -19,7 +18,8 @@ const ExploreStory = () => {
             { y: 0, opacity: 1 }
         );
         animateWithScroll('#story-subtext-2', 
-            { y: 0, opacity: 1 }
+            { y: 0, opacity: 1 },
+            { toggleActions: 'restart restart restart restart' }
         );
     }, [])
 
