@@ -11,7 +11,7 @@ const ExploreStory = () => {
             { y: 0, opacity: 1, duration: 1, ease: 'power2.inOut' }
         );
         animateWithScroll('.story-img', 
-            { y:0, opacity: 1, scale: 1, ease: 'power', stagger: 0.25 },
+            { y:0, opacity: 1, scale: 1, ease: 'power' },
             { scrub: 5.5 }
         );
         animateWithScroll('#story-subtext-1', 
@@ -61,7 +61,7 @@ const ExploreStory = () => {
                 </div>
             </div>
 
-            <div className="w-full px-40">
+            <div className="w-full sm:px-40 px-15">
                 <h1 id="story-subtext-1" className="section">
                     Over the years, the Submariner has benefited from innovations developed by Rolex, 
                     making it a timeless benchmark for divers’ watches.
@@ -74,7 +74,7 @@ const ExploreStory = () => {
                         <img src={rolexCover} alt="rolex-on-water"/>
                     </div>
                 </div>
-                <div className="flex-center px-40 mt-20">
+                <div className="flex-center sm:px-40 px-15 mt-20">
                     <h2 id="story-subtext-2" className="section">
                         With a case waterproof to a depth of 300 metres (1,000 feet), 
                         a unidirectional rotatable bezel graduated over 60 minutes and luminescent 

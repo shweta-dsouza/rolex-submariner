@@ -27,7 +27,7 @@ const Hero = () => {
             <p className="section-subtitle g_title">Oyster Perpetual</p>
             <p className="section-title g_title">Submariner</p>
             <div className="md:w-10/12 w-9/12 flex justify-center">
-                <video autoPlay loop muted playsInline={true} key={mainVideo} className="h-[50vh]">
+                <video autoPlay loop muted playsInline={true} key={mainVideo} className="sm:h-[50vh] h-[30vh]">
                     <source src={mainVideo} type="video/mp4"/>
                 </video>
             </div>
