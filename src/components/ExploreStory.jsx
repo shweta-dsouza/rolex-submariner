@@ -17,10 +17,6 @@ const ExploreStory = () => {
         animateWithScroll('#story-subtext-1', 
             { y: 0, opacity: 1 }
         );
-        animateWithScroll('#story-subtext-2', 
-            { y: 0, opacity: 1 },
-            { toggleActions: 'restart restart restart restart' }
-        );
     }, [])
 
 
@@ -76,7 +72,7 @@ const ExploreStory = () => {
                     </div>
                 </div>
                 <div className="flex-center sm:px-40 px-15 mt-20">
-                    <h2 id="story-subtext-2" className="section">
+                    <h2 className="font-semibold lg:text-3xl md:text-2xl text-xl text-gray-400">
                         With a case waterproof to a depth of 300 metres (1,000 feet), 
                         a unidirectional rotatable bezel graduated over 60 minutes and luminescent 
                         display features, the Submariner and Submariner Date both boast essential technical 
