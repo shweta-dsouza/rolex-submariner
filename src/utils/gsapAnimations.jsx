@@ -9,7 +9,7 @@ export const animateWithScroll = (targetElement, animationProps, scrollProps) =>
     scrollTrigger: {
       trigger: targetElement,
       toggleActions: 'restart reverse restart reverse',
-      // start: 'top 90%',
+      start: 'top 90%',
       ...scrollProps,
     }
   })
