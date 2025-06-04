@@ -4,6 +4,7 @@ import { animateWithScroll } from "../utils/gsapAnimations";
 const Features = () => {
     useGSAP(() => {
         animateWithScroll('.g_text', {
+            y: 0,
             opacity: 1,
             duration: 1,
             delay: 0.1,
