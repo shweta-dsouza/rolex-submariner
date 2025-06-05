@@ -180,7 +180,7 @@ const VideoSlider = () => {
 
               <div className="absolute sm:top-12 top-4 left-[5%] z-10">
                 {item.descriptionList.map(desc => (
-                  <p key={desc} className="md:text-xl text-lg font-medium">
+                  <p key={desc} className="md:text-xl text-sm font-medium">
                     {desc}
                   </p>
                 ))}
