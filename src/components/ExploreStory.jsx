@@ -15,7 +15,7 @@ const ExploreStory = () => {
             { scrub: 5.5 }
         );
         animateWithScroll('#story-subtext-1', 
-            { y: 0, opacity: 1 },
+            { y: 0, opacity: 1, ease: 'power', duration: 1 },
             { toggleActions: 'restart none none reverse', end: 'bottom top' }
         );
     }, [])
