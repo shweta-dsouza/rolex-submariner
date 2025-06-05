@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
-import { videoSlides } from "../constants";
+import { videoSlides, smallVideoSlides } from "../constants";
 import { pauseSvg, playSvg, replaySvg } from "../utils";
 
 const VideoSlider = () => {
@@ -11,6 +11,7 @@ const VideoSlider = () => {
   const videoSpanRef = useRef([]);
   const videoDivRef = useRef([]);
 
+  const [carouselSlides, setCarouselSlides] = useState(window.innerWidth < 760 ? smallVideoSlides : videoSlides)
   const [video, setVideo] = useState({
     videoId: 0,
     startVideoPlay: false,
@@ -18,7 +19,7 @@ const VideoSlider = () => {
     isVideoPlaying: false,
     isLastVideo: false
   });
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
   const { videoId, startVideoPlay, isVideoEnd, isVideoPlaying, isLastVideo } = video;
 
@@ -30,19 +31,35 @@ const VideoSlider = () => {
     })
 
     gsap.to('#video', {
-      scrollTrigger : {
+      scrollTrigger: {
         trigger: '#video',
         toggleActions: 'restart none none none' //  {onEnter, onLeave, onEnterBack, onLeaveBack}
       },
       onComplete: () => {
-        setVideo(prev => ({...prev, startVideoPlay: true, isVideoPlaying: true}))
+        setVideo(prev => ({ ...prev, startVideoPlay: true, isVideoPlaying: true }))
       }
     })
   }, [videoId, isVideoEnd])
 
+  const handleVideoSource = () => {
+    if (window.innerWidth < 760) {
+      setCarouselSlides(smallVideoSlides)
+    } else {
+      setCarouselSlides(videoSlides)
+    }
+  };
+
   useEffect(() => {
-    if(data.length > 3) {
-      if(!isVideoPlaying) {
+    window.addEventListener('resize', handleVideoSource);
+
+    return () => {
+      window.removeEventListener('resize', handleVideoSource)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (data.length > 3) {
+      if (!isVideoPlaying) {
         videoRef.current[videoId].pause();
       } else {
         startVideoPlay && videoRef.current[videoId].play();
@@ -54,16 +71,16 @@ const VideoSlider = () => {
     let currProgress = 0;
     let currSpan = videoSpanRef.current;
 
-    if(currSpan[videoId]) {
+    if (currSpan[videoId]) {
       // animate the slider progress of video
       let anim = gsap.to(currSpan[videoId], {
         onUpdate: () => {
           const animProgress = Math.ceil(anim.progress() * 100);
-          if(animProgress != currProgress) {
+          if (animProgress != currProgress) {
             currProgress = animProgress;
 
             gsap.to(videoDivRef.current[videoId], {
-                width: window.innerWidth < 760 ? '10vw' : '4vw'
+              width: window.innerWidth < 760 ? '10vw' : '4vw'
             })
 
             gsap.to(currSpan[videoId], {
@@ -73,7 +90,7 @@ const VideoSlider = () => {
           }
         },
         onComplete: () => {
-          if(isVideoPlaying) {
+          if (isVideoPlaying) {
             gsap.to(videoDivRef.current[videoId], {
               width: '12px'
             })
@@ -84,12 +101,12 @@ const VideoSlider = () => {
         }
       })
 
-      if(videoId === 0) {
+      if (videoId === 0) {
         anim.restart();
       }
 
       const animProgressUpdate = () => {
-        anim.progress(videoRef.current[videoId].currentTime / videoSlides[videoId].videoDuration)
+        anim.progress(videoRef.current[videoId]?.currentTime / videoSlides[videoId].videoDuration)
       }
 
       if (isVideoPlaying) {
@@ -119,19 +136,19 @@ const VideoSlider = () => {
       case 'play':
         setVideo(prev => ({ ...prev, isVideoPlaying: !prev.isVideoPlaying }))
         break;
-    
+
       case 'pause':
         setVideo(prev => ({ ...prev, isVideoPlaying: !prev.isVideoPlaying }))
         break;
-    
+
       case 'end':
         setVideo(prev => ({ ...prev, isVideoEnd: true, videoId: i + 1 }))
         break;
-    
+
       case 'last':
         setVideo(prev => ({ ...prev, isLastVideo: true }))
         break;
-    
+
       default:
         return video;
     }
@@ -147,52 +164,52 @@ const VideoSlider = () => {
 
   return (
     <>
-        <div className="flex items-center">
-            {videoSlides.map((item, idx) => (
-              <div id="carousel" key={item.id} className="sm:pr-20 pr-10">
-                <div className="video-container">
-                  <div className="w-full h-full bg-black rounded-xl overflow-hidden flex-center">
-                    <video id="video" playsInline={true} preload="auto" muted
-                      ref={(e) => (videoRef.current[idx] = e)} 
-                      onEnded={() => handleVideoEnd(idx)}
-                      onPlay={() => handleVideoPlay}
-                      onLoadedMetadata={(e) => handleMetaData(idx, e)}>
-                      <source src={item.videoSrc} type="video/mp4" />
-                    </video>
-                  </div>
-
-                  <div className="absolute top-12 left-[5%] z-10">
-                    {item.descriptionList.map(desc => (
-                      <p key={desc} className="md:text-xl text-lg font-medium"> 
-                        {desc} 
-                      </p>
-                    ))}
-                  </div>
-                </div>
+      <div className="flex items-center">
+        {carouselSlides.map((item, idx) => (
+          <div id="carousel" key={item.id} className="sm:pr-20 pr-10">
+            <div className="video-container">
+              <div className="w-full h-full bg-black rounded-xl overflow-hidden flex-center">
+                <video id="video" playsInline={true} preload="auto" muted
+                  ref={(e) => (videoRef.current[idx] = e)}
+                  onEnded={() => handleVideoEnd(idx)}
+                  onPlay={() => handleVideoPlay}
+                  onLoadedMetadata={(e) => handleMetaData(idx, e)}>
+                  <source src={item.videoSrc} type="video/mp4" />
+                </video>
               </div>
-            ))}
+
+              <div className="absolute sm:top-12 top-4 left-[5%] z-10">
+                {item.descriptionList.map(desc => (
+                  <p key={desc} className="md:text-xl text-lg font-medium">
+                    {desc}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="relative flex-center mt-7">
+        <div className="sm:py-5 py-4 sm:px-7 px-5 bg-zinc-700 backdrop-blur rounded-full flex-center">
+          {videoRef.current.map((_, idx) => (
+            <span key={idx} ref={(e) => (videoDivRef.current[idx] = e)}
+              className="relative mx-2 sm:w-3 w-1 sm:h-3 h-1 bg-zinc-500 rounded-full">
+              <span className="absolute rounded-full h-full w-full" ref={(e) => (videoSpanRef.current[idx] = e)} />
+            </span>
+          ))}
         </div>
 
-        <div className="relative flex-center mt-7">
-          <div className="sm:py-5 py-4 sm:px-7 px-5 bg-zinc-700 backdrop-blur rounded-full flex-center">
-            {videoRef.current.map((_, idx) => (
-              <span key={idx} ref={(e) => (videoDivRef.current[idx] = e)} 
-                className="relative mx-2 sm:w-3 w-1 sm:h-3 h-1 bg-zinc-500 rounded-full">
-                  <span className="absolute rounded-full h-full w-full" ref={(e) => (videoSpanRef.current[idx] = e)}/>
-              </span>
-            ))}
-            </div>
-            
-            <button className="ml-4 sm:p-4 p-2 bg-zinc-700 backdrop-blur rounded-full flex-center"
-              onClick={isLastVideo ? () => handleVideoActions('replay') : 
-                isVideoPlaying ? () => handleVideoActions('pause') :
-                () => handleVideoActions('play')
-              }
-            >
-              <img src={isLastVideo ? replaySvg : isVideoPlaying ? pauseSvg : playSvg} 
-                alt={isLastVideo ? "replay" : isVideoPlaying ? "pause" : 'play'} />
-            </button>
-        </div>
+        <button className="ml-4 sm:p-4 p-2 bg-zinc-700 backdrop-blur rounded-full flex-center"
+          onClick={isLastVideo ? () => handleVideoActions('replay') :
+            isVideoPlaying ? () => handleVideoActions('pause') :
+              () => handleVideoActions('play')
+          }
+        >
+          <img src={isLastVideo ? replaySvg : isVideoPlaying ? pauseSvg : playSvg}
+            alt={isLastVideo ? "replay" : isVideoPlaying ? "pause" : 'play'} />
+        </button>
+      </div>
     </>
   )
 }

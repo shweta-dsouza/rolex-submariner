@@ -1,8 +1,27 @@
+import { useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { mainVideo } from "../utils";
+import { mainVideo, smallMainVideo } from "../utils";
 
 const Hero = () => {
+    const [videoSource, setVideoSource] = useState(window.innerWidth < 760 ? smallMainVideo : mainVideo);
+
+    const handleVideoSource = () => {
+        if (window.innerWidth < 760) {
+            setVideoSource(smallMainVideo)
+        } else {
+            setVideoSource(mainVideo)
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleVideoSource);
+
+        return () => {
+            window.removeEventListener('resize', handleVideoSource)
+        }
+    }, [])
+
     useGSAP(() => {
         gsap.to('.g_title', {
             opacity: 1,
@@ -21,24 +40,24 @@ const Hero = () => {
         })
     }, [])
 
-  return (
-    <section className="w-full my-8 bg-black relative">
-        <div className="h-5/6 w-full flex-center flex-col">
-            <p className="section-subtitle g_title">Oyster Perpetual</p>
-            <p className="section-title g_title">Submariner</p>
-            <div className="md:w-10/12 w-9/12 flex justify-center">
-                <video autoPlay loop muted playsInline={true} key={mainVideo} className="sm:h-[50vh] h-[30vh]">
-                    <source src={mainVideo} type="video/mp4"/>
-                </video>
+    return (
+        <section className="w-full my-8 bg-black relative">
+            <div className="h-5/6 w-full flex-center flex-col">
+                <p className="section-subtitle g_title">Oyster Perpetual</p>
+                <p className="section-title g_title">Submariner</p>
+                <div className="md:w-10/12 w-9/12 flex justify-center">
+                    <video autoPlay loop muted playsInline={true} key={mainVideo} className="sm:h-[50vh] h-[30vh]">
+                        <source src={videoSource} type="video/mp4" />
+                    </video>
+                </div>
+                <div>
+                    <p id="hero-info" className="section text-center">
+                        Dive into another world
+                    </p>
+                </div>
             </div>
-            <div>
-                <p id="hero-info" className="section text-center">
-                    Dive into another world
-                </p>
-            </div>
-        </div>
-    </section>
-  )
+        </section>
+    )
 }
 
 export default Hero;
