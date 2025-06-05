@@ -51,7 +51,7 @@ body {
   }
 
   .video-container {
-    @apply relative sm:w-[70vw] w-[88vw]
+    @apply relative sm:w-[70vw] w-[88vw] xl:h-[69vh] lg:h-[54vh] md:h-[42vh] sm:h-[33vh] h-[21vh]
   }
 
   .story-text {
