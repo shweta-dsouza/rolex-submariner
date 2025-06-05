@@ -170,6 +170,7 @@ const VideoSlider = () => {
             <div className="video-container">
               <div className="w-full h-full bg-black rounded-xl overflow-hidden flex-center">
                 <video id="video" playsInline={true} preload="auto" muted
+                  poster={item.thumbnail}
                   ref={(e) => (videoRef.current[idx] = e)}
                   onEnded={() => handleVideoEnd(idx)}
                   onPlay={() => handleVideoPlay}

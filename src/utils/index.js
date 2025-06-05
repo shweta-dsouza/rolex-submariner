@@ -19,7 +19,10 @@ import pauseimg from "../assets/images/pause.svg";
 import featuretwoimg from "../assets/images/rolex-feature-2.jpg"
 import featurethreeimg from "../assets/images/rolex-feature-3.jpg"
 import rolexcoverimg from "../assets/images/rolex-cover.avif"
-
+import videothmbnlone from "../assets/images/video-thumbnail-1.jpg"
+import videothmbnltwo from "../assets/images/video-thumbnail-2.jpg"
+import videothmbnlthree from "../assets/images/video-thumbnail-3.jpg"
+import videothmbnlfour from "../assets/images/video-thumbnail-4.jpg"
 
 export const mainVideo = mainmv;
 export const smallMainVideo = smallmainmv;
@@ -42,3 +45,7 @@ export const pauseSvg = pauseimg;
 export const rolexUnderwater = featuretwoimg;
 export const rolexOnWater = featurethreeimg;
 export const rolexCover = rolexcoverimg;
+export const videoThumbnailOne = videothmbnlone;
+export const videoThumbnailTwo = videothmbnltwo;
+export const videoThumbnailThree = videothmbnlthree;
+export const videoThumbnailFour = videothmbnlfour;
