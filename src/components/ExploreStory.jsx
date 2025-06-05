@@ -56,13 +56,13 @@ const ExploreStory = () => {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="w-full sm:px-40 px-15">
-                <h1 id="story-subtext-1" className="section">
-                    Over the years, the Submariner has benefited from innovations developed by Rolex, 
-                    making it a timeless benchmark for divers’ watches.
-                </h1>
+                <div className="w-full flex-center sm:px-40 px-15">
+                    <h1 id="story-subtext-1" className="section">
+                        Over the years, the Submariner has benefited from innovations developed by Rolex, 
+                        making it a timeless benchmark for divers’ watches.
+                    </h1>
+                </div>
             </div>
 
             <div className="story-container mt-10 mb-20">
