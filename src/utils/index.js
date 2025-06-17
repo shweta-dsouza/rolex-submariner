@@ -9,20 +9,20 @@ import smallrolexthirdmv from "../assets/videos/rolex-third-ad-mobile.mp4";
 import rolexfourthmv from "../assets/videos/rolex-fourth-ad.mp4";
 import smallrolexfourthmv from "../assets/videos/rolex-fourth-ad-mobile.mp4";
 
-import roleximg from "../assets/images/rolex-crown.png";
-import searchimg from "../assets/images/search.svg";
-import bagimg from "../assets/images/fav.png";
-import replayimg from "../assets/images/replay.svg";
-import playimg from "../assets/images/play.svg";
-import pauseimg from "../assets/images/pause.svg";
+import roleximg from "/.netlify/images?url=/src/assets/images/rolex-crown.png";
+import searchimg from "/.netlify/images?url=/src/assets/images/search.svg";
+import bagimg from "/.netlify/images?url=/src/assets/images/fav.png";
+import replayimg from "/.netlify/images?url=/src/assets/images/replay.svg";
+import playimg from "/.netlify/images?url=/src/assets/images/play.svg";
+import pauseimg from "/.netlify/images?url=/src/assets/images/pause.svg";
 
-import featuretwoimg from "../assets/images/rolex-feature-2.jpg"
-import featurethreeimg from "../assets/images/rolex-feature-3.jpg"
-import rolexcoverimg from "../assets/images/rolex-cover.avif"
-import videothmbnlone from "../assets/images/video-thumbnail-1.jpg"
-import videothmbnltwo from "../assets/images/video-thumbnail-2.jpg"
-import videothmbnlthree from "../assets/images/video-thumbnail-3.jpg"
-import videothmbnlfour from "../assets/images/video-thumbnail-4.jpg"
+import featuretwoimg from "/.netlify/images?url=/src/assets/images/rolex-feature-2.jpg"
+import featurethreeimg from "/.netlify/images?url=/src/assets/images/rolex-feature-3.jpg"
+import rolexcoverimg from "/.netlify/images?url=/src/assets/images/rolex-cover.avif"
+import videothmbnlone from "/.netlify/images?url=/src/assets/images/video-thumbnail-1.jpg"
+import videothmbnltwo from "/.netlify/images?url=/src/assets/images/video-thumbnail-2.jpg"
+import videothmbnlthree from "/.netlify/images?url=/src/assets/images/video-thumbnail-3.jpg"
+import videothmbnlfour from "/.netlify/images?url=/src/assets/images/video-thumbnail-4.jpg"
 
 export const mainVideo = mainmv;
 export const smallMainVideo = smallmainmv;
