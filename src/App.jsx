@@ -1,27 +1,21 @@
-import { lazy, Suspense } from "react"
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css'
-
-const Navbar = lazy(() => import("./components/Navbar"))
-const Hero = lazy(() => import("./components/Hero"))
-const CloserLook = lazy(() => import("./components/CloserLook"))
-const ExploreStory = lazy(() => import("./components/ExploreStory"))
-const Features = lazy(() => import("./components/Features"))
-const Footer = lazy(() => import("./components/Footer"))
+import Navbar from "./components/Navbar"
+import Hero from "./components/Hero"
+import CloserLook from "./components/CloserLook"
+import ExploreStory from "./components/ExploreStory"
+import Features from "./components/Features"
+import Footer from "./components/Footer"
 
 const App = () => {
 
   return (
-    <Suspense fallback={<Skeleton count={15} height={30} />} >
-      <main className="bg-black">
-        <Navbar />
-        <Hero />
-        <CloserLook />
-        <ExploreStory />
-        <Features />
-        <Footer />
-      </main>
-    </Suspense>
+    <main className="bg-black">
+      <Navbar />
+      <Hero />
+      <CloserLook />
+      <ExploreStory />
+      <Features />
+      <Footer />
+    </main>
   )
 }
 

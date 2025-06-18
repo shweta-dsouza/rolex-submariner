@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 import { videoSlides, smallVideoSlides } from "../constants";
-// import { pauseSvg, playSvg, replaySvg } from "../utils";
+import { pauseSvg, playSvg, replaySvg } from "../utils";
 
 const VideoSlider = () => {
   const videoRef = useRef([]);
@@ -21,28 +24,21 @@ const VideoSlider = () => {
   const { videoId, startVideoPlay, isVideoEnd, isVideoPlaying, isLastVideo } = video;
 
   useGSAP(() => {
-    const loadAndAnimate = async () => {
-      const { default: gsap } = await import('gsap');
-      const pluginModule = await import('gsap/ScrollTrigger');
-      gsap.registerPlugin(pluginModule.default);
+    gsap.to('#carousel', {
+      transform: `translateX(${-100 * videoId}%)`,
+      duration: 1.5,
+      ease: 'power2.inOut'
+    })
 
-      gsap.to('#carousel', {
-        transform: `translateX(${-100 * videoId}%)`,
-        duration: 1.5,
-        ease: 'power2.inOut'
-      });
-
-      gsap.to('#video', {
-        scrollTrigger: {
-          trigger: '#video',
-          toggleActions: 'restart none none none' //  {onEnter, onLeave, onEnterBack, onLeaveBack}
-        },
-        onComplete: () => {
-          setVideo(prev => ({ ...prev, startVideoPlay: true, isVideoPlaying: true }))
-        }
-      })
-    }
-    loadAndAnimate();
+    gsap.to('#video', {
+      scrollTrigger: {
+        trigger: '#video',
+        toggleActions: 'restart none none none' //  {onEnter, onLeave, onEnterBack, onLeaveBack}
+      },
+      onComplete: () => {
+        setVideo(prev => ({ ...prev, startVideoPlay: true, isVideoPlaying: true }))
+      }
+    })
   }, [videoId, isVideoEnd])
 
   const handleVideoSource = () => {
@@ -211,9 +207,7 @@ const VideoSlider = () => {
               () => handleVideoActions('play')
           }
         >
-          <img src={isLastVideo ? "/.netlify/images?url=/src/assets/images/replay.svg" : isVideoPlaying ?
-            "/.netlify/images?url=/src/assets/images/pause.svg"
-            : "/.netlify/images?url=/src/assets/images/play.svg"}
+          <img src={isLastVideo ? replaySvg : isVideoPlaying ? pauseSvg : playSvg}
             alt={isLastVideo ? "replay" : isVideoPlaying ? "pause" : 'play'} />
         </button>
       </div>
