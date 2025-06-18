@@ -7,8 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     compression({
-      algorithms: ['brotliCompress'],
-      deleteOriginalAssets: true
+      algorithms: ['brotliCompress']
     })
   ],
   build: {
