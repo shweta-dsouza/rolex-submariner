@@ -7,10 +7,10 @@ import {
   smallRolexSecondVideo,
   smallRolexThirdVideo,
   smallRolexFourthVideo,
-  videoThumbnailOne,
-  videoThumbnailTwo,
-  videoThumbnailThree,
-  videoThumbnailFour
+  // videoThumbnailOne,
+  // videoThumbnailTwo,
+  // videoThumbnailThree,
+  // videoThumbnailFour
 } from "../utils";
 
 export const navLists = ["Rolex Watches", "Store Locator", "Support", "About Rolex"];
@@ -21,28 +21,28 @@ export const videoSlides = [
     descriptionList: ["The evolution of a tool watch."],
     videoSrc: rolexFirstVideo,
     videoDuration: 5,
-    thumbnail: videoThumbnailOne
+    thumbnail: "/.netlify/images?url=/src/assets/images/video-thumbnail-1.jpg"
   },
   {
     id: 2,
     descriptionList: ["A tool watch in step with the times."],
     videoSrc: rolexSecondVideo,
     videoDuration: 6,
-    thumbnail: videoThumbnailTwo
+    thumbnail: "/.netlify/images?url=/src/assets/images/video-thumbnail-2.jpg"
   },
   {
     id: 3,
     descriptionList: ["A pioneering divers’ watch."],
     videoSrc: rolexThirdVideo,
     videoDuration: 11,
-    thumbnail: videoThumbnailThree
+    thumbnail: "/.netlify/images?url=/src/assets/images/video-thumbnail-3.jpg"
   },
   {
     id: 4,
     descriptionList: ["Waterproofness:", "a founding quest,", "a perpetual challenge."],
     videoSrc: rolexFourthVideo,
     videoDuration: 9,
-    thumbnail: videoThumbnailFour
+    thumbnail: "/.netlify/images?url=/src/assets/images/video-thumbnail-4.jpg"
   }
 ];
 
@@ -52,28 +52,28 @@ export const smallVideoSlides = [
     descriptionList: ["The evolution of a tool watch."],
     videoSrc: smallRolexFirstVideo,
     videoDuration: 5,
-    thumbnail: videoThumbnailOne
+    thumbnail: "/.netlify/images?url=/src/assets/images/video-thumbnail-1.jpg"
   },
   {
     id: 2,
     descriptionList: ["A tool watch in step with the times."],
     videoSrc: smallRolexSecondVideo,
     videoDuration: 6,
-    thumbnail: videoThumbnailTwo
+    thumbnail: "/.netlify/images?url=/src/assets/images/video-thumbnail-2.jpg"
   },
   {
     id: 3,
     descriptionList: ["A pioneering divers’ watch."],
     videoSrc: smallRolexThirdVideo,
     videoDuration: 11,
-    thumbnail: videoThumbnailThree
+    thumbnail: "/.netlify/images?url=/src/assets/images/video-thumbnail-3.jpg"
   },
   {
     id: 4,
     descriptionList: ["Waterproofness:", "a founding quest,", "a perpetual challenge."],
     videoSrc: smallRolexFourthVideo,
     videoDuration: 9,
-    thumbnail: videoThumbnailFour
+    thumbnail: "/.netlify/images?url=/src/assets/images/video-thumbnail-4.jpg"
   }
 ];
 
