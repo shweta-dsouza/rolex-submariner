@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import { animateWithScroll } from "../utils/gsapAnimations";
-// import { rolexOnWater, rolexUnderwater, rolexCover } from "../utils";
+import { rolexOnWater, rolexUnderwater, rolexCover } from "../utils";
 
 const ExploreStory = () => {
     useGSAP(() => {
@@ -50,12 +50,10 @@ const ExploreStory = () => {
                 <div className="story-container mt-10 mb-20">
                     <div className="flex-center flex-col w-full gap-4">
                         <div className="overflow-hidden">
-                            <img src="/.netlify/images?url=/src/assets/images/rolex-feature-3.jpg" 
-                                alt="rolex-on-water" className="story-img"/>
+                            <img src={rolexOnWater} alt="rolex-on-water" className="story-img"/>
                         </div>
                         <div className="overflow-hidden">
-                            <img src="/.netlify/images?url=/src/assets/images/rolex-feature-2.jpg" 
-                                alt="rolex-underwater" className="story-img"/>
+                            <img src={rolexUnderwater} alt="rolex-underwater" className="story-img"/>
                         </div>
                     </div>
                 </div>
@@ -71,7 +69,7 @@ const ExploreStory = () => {
             <div className="story-container mt-10 mb-20">
                 <div className="flex-center w-full">
                     <div className="overflow-hidden">
-                        <img src="/.netlify/images?url=/src/assets/images/rolex-cover.avif" alt="rolex-on-water"/>
+                        <img src={rolexCover} alt="rolex-on-water"/>
                     </div>
                 </div>
                 <div className="flex-center sm:px-40 px-15 mt-20">
